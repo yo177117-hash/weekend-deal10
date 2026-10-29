@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    Weekend Picks · 2026.10.30-11.01
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+  >
+
+  <style>
+    /* =========================================================
+       1. 공통 설정
+       ========================================================= */
+    :root {
+      --bg: #f5f1eb;
+      --card: #ffffff;
+      --text: #171717;
+      --muted: #756e67;
+      --accent: #ff561f;
+      --accent2: #ff7b3e;
+      --black: #151515;
+      --shadow: 0 15px 38px rgba(27, 20, 16, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 50% 0,
+          #ffffff 0,
+          #faf7f3 40%,
+          var(--bg) 100%
+        );
+
+      font-family:
+        Pretendard,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans KR",
+        sans-serif;
+    }
+
+
+    /* =========================================================
+       2. 전체 페이지 / 상단
+       ========================================================= */
+    .page {
+      width: min(980px, calc(100% - 16px));
+      margin: 12px auto 30px;
+    }
+
+    .intro {
+      padding: 12px 10px 17px;
+      text-align: center;
+    }
+
+    .intro-badge {
+      display: inline-flex;
+      padding: 7px 13px;
+
+      border-radius: 999px;
+
+      color: #ffffff;
+      background: #171717;
+
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+    }
+
+    .intro h1 {
+      margin: 9px 0 0;
+
+      font-size: clamp(31px, 3.8vw, 47px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.055em;
+    }
+
+    .intro p {
+      margin: 7px auto 0;
+
+      color: var(--muted);
+
+      font-size: clamp(13px, 1.4vw, 16px);
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+
+    /* =========================================================
+       3. 게임 카드
+       ========================================================= */
+    .game-card {
+      margin-bottom: 14px;
+      padding: 12px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 24px;
+
+      background: var(--card);
+
+      box-shadow: var(--shadow);
+    }
+
+    .gallery {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .main-stage {
+      position: relative;
+      height: 320px;
+
+      overflow: hidden;
+
+      border-radius: 17px;
+
+      background: #151515;
+    }
+
+    .main-stage img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .pick-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+
+      z-index: 4;
+
+      padding: 6px 9px;
+
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+
+      color: #ffffff;
+      background: rgba(18, 18, 18, 0.62);
+
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.10em;
+    }
+
+    .discount {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+
+      z-index: 4;
+
+      min-width: 110px;
+
+      padding: 8px 11px;
+
+      border-radius: 14px;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
+
+      text-align: center;
+    }
+
+    .discount small {
+      display: block;
+      margin-bottom: 2px;
+
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+    }
+
+    .discount strong {
+      display: block;
+
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+
+    /* =========================================================
+       4. 썸네일
+       ========================================================= */
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 7px;
+
+      margin-top: 7px;
+    }
+
+    .thumb {
+      position: relative;
+
+      height: 70px;
+
+      padding: 0;
+      overflow: hidden;
+
+      border: 2px solid transparent;
+      border-radius: 10px;
+
+      background: #111;
+
+      cursor: pointer;
+
+      opacity: 0.72;
+
+      transition: 0.18s ease;
+    }
+
+    .thumb img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .thumb:hover,
+    .thumb.active {
+      opacity: 1;
+
+      border-color: var(--accent);
+
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       5. 게임 정보 / 가격
+       ========================================================= */
+    .content {
+      padding: 14px 10px 4px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+
+      color: var(--accent);
+
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .title {
+      margin: 0;
+
+      font-size: clamp(25px, 3.2vw, 36px);
+      line-height: 1.08;
+      font-weight: 950;
+      letter-spacing: -0.045em;
+
+      word-break: keep-all;
+    }
+
+    .summary {
+      max-width: 720px;
+      margin: 7px auto 0;
+
+      color: #5f5953;
+
+      font-size: clamp(13px, 1.3vw, 15px);
+      line-height: 1.45;
+      font-weight: 650;
+
+      word-break: keep-all;
+    }
+
+    .divider {
+      width: 38px;
+      height: 2px;
+
+      margin: 10px auto;
+
+      border: 0;
+
+      background: #ddd5ce;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+    }
+
+    .price-old {
+      color: #9a938d;
+
+      font-size: 15px;
+      font-weight: 750;
+
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+    }
+
+    .price-arrow {
+      color: #c5bdb6;
+
+      font-size: 15px;
+      font-weight: 850;
+
+      transform: translateY(-2px);
+    }
+
+    .price-final {
+      color: var(--accent);
+
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 0.96;
+      font-weight: 950;
+      letter-spacing: -0.05em;
+    }
+
+    .price-note {
+      margin: 5px 0 0;
+
+      color: #8d857e;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .period {
+      margin: 6px 0 0;
+
+      color: #8c857e;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+
+    /* =========================================================
+       6. 버튼
+       ========================================================= */
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 6px;
+
+      margin-top: 10px;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: min(340px, 100%);
+      min-height: 42px;
+
+      padding: 9px 18px;
+
+      border-radius: 999px;
+
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 900;
+
+      transition: 0.2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px) scale(1.012);
+    }
+
+    .coupon {
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
+    }
+
+    .game-link {
+      color: #ffffff;
+      background: var(--black);
+    }
+
+    .coupon-icon {
+      display: inline-grid;
+      place-items: center;
+
+      width: 26px;
+      height: 20px;
+
+      margin-right: 8px;
+
+      border: 2px solid rgba(255, 255, 255, 0.96);
+      border-radius: 5px;
+
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 950;
+
+      transform: rotate(-2deg);
+    }
+
+    .arrow {
+      margin-left: 7px;
+    }
+
+    .note {
+      margin: 6px 0 0;
+
+      color: #aaa29a;
+
+      font-size: 9px;
+      font-weight: 650;
+    }
+
+
+    /* =========================================================
+       7. 모바일
+       ========================================================= */
+    @media (max-width: 760px) {
+
+      .page {
+        width: calc(100% - 8px);
+        margin: 5px auto 16px;
+      }
+
+      .intro {
+        padding: 10px 7px 13px;
+      }
+
+      .intro h1 {
+        font-size: 31px;
+      }
+
+      .intro p {
+        font-size: 12.5px;
+      }
+
+      .game-card {
+        padding: 7px;
+        margin-bottom: 9px;
+
+        border-radius: 19px;
+      }
+
+      .main-stage {
+        height: 260px;
+
+        border-radius: 13px;
+      }
+
+      .thumb {
+        height: 62px;
+
+        border-radius: 8px;
+      }
+
+      .content {
+        padding: 12px 6px 3px;
+      }
+
+      .title {
+        font-size: clamp(23px, 6.2vw, 29px);
+      }
+
+      .summary {
+        font-size: 12.5px;
+        line-height: 1.35;
+      }
+
+      .price-final {
+        font-size: 38px;
+      }
+
+      .cta {
+        width: 100%;
+        min-height: 41px;
+
+        font-size: 12.5px;
+      }
+    }
+
+
+    @media (max-width: 420px) {
+
+      .main-stage {
+        height: 248px;
+      }
+
+      .thumb {
+        height: 58px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main class="page">
+
+    <header class="intro">
+
+      <div class="intro-badge">
+        WEEKEND DEAL
+      </div>
+
+      <h1>
+        Weekend Picks
+      </h1>
+
+      <p>
+        Three special picks for this weekend.<br>Browse the gallery and jump straight into the game you want.
+      </p>
+
+    </header>
+
+
+
+  <!-- =====================================================
+       GAME 1: Hypatia
+       ===================================================== -->
+  <section
+    class="game-card"
+    data-game-index="0"
+  >
+
+    <div class="gallery">
+
+      <div
+        class="main-stage"
+        id="mainStage0"
+      >
+        <img
+          class="main-image"
+          id="mainImage0"
+          src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219065094/application_no/119001/images/%EC%8B%9C%EB%86%89%EC%8B%9C%EC%8A%A41_1758428729201.png"
+          alt="Hypatia"
+        >
+
+        <div class="pick-label">
+          01 · WEEKEND PICK
+        </div>
+
+        <div class="discount">
+          <small>
+            FINAL DISCOUNT
+          </small>
+
+          <strong>
+            57.6%
+          </strong>
+        </div>
+      </div>
+
+      <div class="thumbs">
+
+        <button
+          class="thumb active"
+          type="button"
+          data-card-index="0"
+          data-asset-index="0"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219065094/application_no/119001/images/%EC%8B%9C%EB%86%89%EC%8B%9C%EC%8A%A41_1758428729201.png"
+            alt="Hypatia image 1"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="0"
+          data-asset-index="1"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B83_%EC%9C%A0%EB%82%98_RGB_ts_1774266990697.png"
+            alt="Hypatia image 2"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="0"
+          data-asset-index="2"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B81_%EC%9C%A0%EB%A6%AC_RGB_ts_1774267000263.png"
+            alt="Hypatia image 3"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="0"
+          data-asset-index="3"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/Hypatia_Novel_URP_15_ko_ts_1784532137712.png"
+            alt="Hypatia image 4"
+          >
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="content">
+
+      <p class="eyebrow">
+        WEEKEND PICK 01
+      </p>
+
+      <h2 class="title">
+        Hypatia
+      </h2>
+
+      <p class="summary">
+        An emotional visual novel about joining forces with the heroines to save a cafe facing closure.
+      </p>
+
+      <hr class="divider">
+
+
+      <div class="price-row">
+
+        <span class="price-old">
+          $9.99
+        </span>
+
+        <span class="price-arrow">
+          →
+        </span>
+
+        <span class="price-final">
+          $4.24
+        </span>
+
+      </div>
+
+      <p class="price-note">
+        50% sale $4.99 · 15% coupon price $4.24
+      </p>
+
+      <p class="period">
+        OCT 30 — NOV 1 · WEEKEND ONLY
+      </p>
+
+
+      <div class="actions">
+
+        <a
+          class="cta coupon"
+          href="https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15768"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="coupon-icon">%</span>
+          Get 15% Coupon
+        </a>
+
+        <a
+          class="cta game-link"
+          href="https://store.onstove.com/en/games/102741"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Game
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+
+      <p class="note">
+        Apply the coupon at checkout after claiming it.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       GAME 2: Zoom in Love: Terri's VN Project
+       ===================================================== -->
+  <section
+    class="game-card"
+    data-game-index="1"
+  >
+
+    <div class="gallery">
+
+      <div
+        class="main-stage"
+        id="mainStage1"
+      >
+        <img
+          class="main-image"
+          id="mainImage1"
+          src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/04_PV_thumbnail_1754356837555.png"
+          alt="Zoom in Love: Terri's VN Project"
+        >
+
+        <div class="pick-label">
+          02 · WEEKEND PICK
+        </div>
+
+        <div class="discount">
+          <small>
+            FINAL DISCOUNT
+          </small>
+
+          <strong>
+            70.3%
+          </strong>
+        </div>
+      </div>
+
+      <div class="thumbs">
+
+        <button
+          class="thumb active"
+          type="button"
+          data-card-index="1"
+          data-asset-index="0"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/04_PV_thumbnail_1754356837555.png"
+            alt="Zoom in Love: Terri's VN Project image 1"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="1"
+          data-asset-index="1"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/-3_1754971827686.jpg"
+            alt="Zoom in Love: Terri's VN Project image 2"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="1"
+          data-asset-index="2"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/_1753251219772.webp"
+            alt="Zoom in Love: Terri's VN Project image 3"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="1"
+          data-asset-index="3"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/_1753251150600.webp"
+            alt="Zoom in Love: Terri's VN Project image 4"
+          >
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="content">
+
+      <p class="eyebrow">
+        WEEKEND PICK 02
+      </p>
+
+      <h2 class="title">
+        Zoom in Love: Terri's VN Project
+      </h2>
+
+      <p class="summary">
+        A campus romance visual novel that begins with an old camera and a fateful encounter with Terri.
+      </p>
+
+      <hr class="divider">
+
+
+      <div class="price-row">
+
+        <span class="price-old">
+          $20.00
+        </span>
+
+        <span class="price-arrow">
+          →
+        </span>
+
+        <span class="price-final">
+          $5.95
+        </span>
+
+      </div>
+
+      <p class="price-note">
+        65% sale $7.00 · 15% coupon price $5.95
+      </p>
+
+      <p class="period">
+        OCT 30 — NOV 1 · WEEKEND ONLY
+      </p>
+
+
+      <div class="actions">
+
+        <a
+          class="cta coupon"
+          href="https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15769"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="coupon-icon">%</span>
+          Get 15% Coupon
+        </a>
+
+        <a
+          class="cta game-link"
+          href="https://store.onstove.com/en/games/101813"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Game
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+
+      <p class="note">
+        Apply the coupon at checkout after claiming it.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       GAME 3: KARATE SURVIVOR
+       ===================================================== -->
+  <section
+    class="game-card"
+    data-game-index="2"
+  >
+
+    <div class="gallery">
+
+      <div
+        class="main-stage"
+        id="mainStage2"
+      >
+        <img
+          class="main-image"
+          id="mainImage2"
+          src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/images/VIDEO%20COVER_1732009247660.jpg"
+          alt="KARATE SURVIVOR"
+        >
+
+        <div class="pick-label">
+          03 · WEEKEND PICK
+        </div>
+
+        <div class="discount">
+          <small>
+            FINAL DISCOUNT
+          </small>
+
+          <strong>
+            74.6%
+          </strong>
+        </div>
+      </div>
+
+      <div class="thumbs">
+
+        <button
+          class="thumb active"
+          type="button"
+          data-card-index="2"
+          data-asset-index="0"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/images/VIDEO%20COVER_1732009247660.jpg"
+            alt="KARATE SURVIVOR image 1"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="2"
+          data-asset-index="1"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/01_1732009261682.jpg"
+            alt="KARATE SURVIVOR image 2"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="2"
+          data-asset-index="2"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/02_1732009263130.jpg"
+            alt="KARATE SURVIVOR image 3"
+          >
+        </button>
+        <button
+          class="thumb"
+          type="button"
+          data-card-index="2"
+          data-asset-index="3"
+        >
+          <img
+            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/05_1732009280587.jpg"
+            alt="KARATE SURVIVOR image 4"
+          >
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="content">
+
+      <p class="eyebrow">
+        WEEKEND PICK 03
+      </p>
+
+      <h2 class="title">
+        KARATE SURVIVOR
+      </h2>
+
+      <p class="summary">
+        A martial-arts action roguelite about mowing down waves of enemies and building powerful move combinations.
+      </p>
+
+      <hr class="divider">
+
+
+      <div class="price-row">
+
+        <span class="price-old">
+          $4.99
+        </span>
+
+        <span class="price-arrow">
+          →
+        </span>
+
+        <span class="price-final">
+          $1.26
+        </span>
+
+      </div>
+
+      <p class="price-note">
+        70% sale $1.49 · 15% coupon price $1.26
+      </p>
+
+      <p class="period">
+        OCT 30 — NOV 1 · WEEKEND ONLY
+      </p>
+
+
+      <div class="actions">
+
+        <a
+          class="cta coupon"
+          href="https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15770"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="coupon-icon">%</span>
+          Get 15% Coupon
+        </a>
+
+        <a
+          class="cta game-link"
+          href="https://store.onstove.com/en/games/4547"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Game
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+
+      <p class="note">
+        Apply the coupon at checkout after claiming it.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  </main>
+
+
+  <script>
+    /* =========================================================
+       게임 이미지 데이터
+       ========================================================= */
+    const games =
+      [{"title": "Hypatia", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219065094/application_no/119001/images/%EC%8B%9C%EB%86%89%EC%8B%9C%EC%8A%A41_1758428729201.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B83_%EC%9C%A0%EB%82%98_RGB_ts_1774266990697.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B81_%EC%9C%A0%EB%A6%AC_RGB_ts_1774267000263.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/Hypatia_Novel_URP_15_ko_ts_1784532137712.png"]}, {"title": "Zoom in Love: Terri's VN Project", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/04_PV_thumbnail_1754356837555.png", "https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/-3_1754971827686.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/_1753251219772.webp", "https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219103647/application_no/119001/images/_1753251150600.webp"]}, {"title": "KARATE SURVIVOR", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/images/VIDEO%20COVER_1732009247660.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/01_1732009261682.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/02_1732009263130.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/05_1732009280587.jpg"]}];
+
+
+    /* =========================================================
+       메인 이미지 변경
+       ========================================================= */
+    function changeMainImage(
+      cardIndex,
+      assetIndex
+    ) {
+
+      const game =
+        games[cardIndex];
+
+      const image =
+        document.getElementById(
+          "mainImage" +
+          cardIndex
+        );
+
+      const nextUrl =
+        game.images[
+          assetIndex
+        ];
+
+      if (
+        image.getAttribute(
+          "src"
+        ) === nextUrl
+      ) {
+        return;
+      }
+
+      image.style.opacity =
+        "0.35";
+
+      setTimeout(
+        () => {
+          image.src =
+            nextUrl;
+
+          image.alt =
+            game.title;
+
+          image.style.opacity =
+            "1";
+        },
+        110
+      );
+    }
+
+
+    /* =========================================================
+       썸네일 이벤트
+       PC: hover
+       모바일: click
+       ========================================================= */
+    document
+      .querySelectorAll(
+        ".thumb"
+      )
+      .forEach(
+        (thumb) => {
+
+          const cardIndex =
+            Number(
+              thumb.dataset
+                .cardIndex
+            );
+
+          const assetIndex =
+            Number(
+              thumb.dataset
+                .assetIndex
+            );
+
+
+          function activate() {
+
+            const card =
+              thumb.closest(
+                ".game-card"
+              );
+
+            card
+              .querySelectorAll(
+                ".thumb"
+              )
+              .forEach(
+                (item) => {
+
+                  item.classList.remove(
+                    "active"
+                  );
+                }
+              );
+
+            thumb.classList.add(
+              "active"
+            );
+
+            changeMainImage(
+              cardIndex,
+              assetIndex
+            );
+
+            postHeight();
+          }
+
+
+          thumb.addEventListener(
+            "mouseenter",
+            () => {
+
+              if (
+                window.matchMedia(
+                  "(hover:hover)"
+                ).matches
+              ) {
+                activate();
+              }
+            }
+          );
+
+
+          thumb.addEventListener(
+            "click",
+            activate
+          );
+        }
+      );
+
+
+    /* =========================================================
+       iframe 높이 전달
+       ========================================================= */
+    function postHeight() {
+
+      window.parent.postMessage(
+        {
+          type:
+            "weekendDealHeight",
+
+          height:
+            document
+              .documentElement
+              .scrollHeight
+        },
+        "*"
+      );
+    }
+
+
+    window.addEventListener(
+      "load",
+      postHeight
+    );
+
+    window.addEventListener(
+      "resize",
+      postHeight
+    );
+
+    setTimeout(
+      postHeight,
+      400
+    );
+
+    setTimeout(
+      postHeight,
+      1200
+    );
+  </script>
+
+</body>
+</html>
